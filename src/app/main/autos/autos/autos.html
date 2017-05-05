@@ -80,14 +80,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="auto in vm.autos">
-            <td>{{auto.id_auto}}</td>
-            <td>{{auto.nombre_modelo}}</td>
-            <td>{{auto.nombre_marca}}</td>
-            <td>{{auto.nombre_tipo}}</td>
-            <td>{{auto.precio}}</td>
-            <td>{{auto.anio_lanzamiento_auto}}</td>
-            <td>{{auto.anio_lanzamiento_auto}}</td>
+          <tr ng-repeat="user in vm.users">
+            <td>{{user.id}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.dolares}}</td>
+            <td>{{user.user_type}}</td>
+            <td>{{user.page}}</td>
+            <td>{{user.referer_id}}</td>
             <td layout="row">
               <md-button class="md-raised" ng-click="vm.showEditForm(auto, $event)">Modificar</md-button>
               <md-button class="md-raised" ng-click="vm.destroy(auto)">Eliminar</md-button>

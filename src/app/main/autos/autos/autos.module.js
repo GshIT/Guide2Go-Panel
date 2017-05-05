@@ -13,6 +13,11 @@
     $stateProvider.state('app.autos', {
       url: '/autos',
       resolve: {
+        users: function(api) {
+          return api.users.get().then(function(res) {
+            return res.data.users;
+          });
+        },
         autos: function(api) {
           return api.autos.get().then(function(res) {
             return res.data;

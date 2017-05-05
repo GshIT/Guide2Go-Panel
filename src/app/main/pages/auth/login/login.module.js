@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('app.pages.auth.login', []).config(config);
+  angular.module('app.pages.auth.login',['angular-jwt']).config(config);
 
   /** @ngInject */
   function config($stateProvider, $translatePartialLoaderProvider, msNavigationServiceProvider) {

@@ -10,17 +10,35 @@
     autos, $state, api, $document, $mdDialog, $mdToast,
     moment, utils, $timeout, $scope,
     marcas, tipos, subtipos, versiones, combustibles, motores,
-    DtOptions
+    DtOptions, $http, users
   ) {
 
     var vm = this;
 
-    vm.autos = autos;
+    //vm.autos = autos;
+    vm.users = users;
     vm.showEditForm = showEditForm;
     vm.showCreateForm = showCreateForm;
     vm.destroy = destroy;
 
     vm.dtOptions = DtOptions;
+
+    /*(function retrieveUsers(){
+      let req = {
+            method: 'GET',
+            url: 'http://digitalcook.info:8000/api/user?token='+localStorage.getItem('token'),
+            headers: {
+              'Access-Control-Allow-Origin': '*'
+            },
+          }
+
+      $http(req).then(function success(response){
+        console.log(response.data.users);
+      }, 
+      function fail(response){
+        console.log(response);
+      });
+    })();*/
 
     function showEditForm(auto, e) {
 		  $mdDialog.show({
