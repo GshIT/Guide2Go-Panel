@@ -1,0 +1,72 @@
+<div id="simple-table" class="page-layout simple fullwidth doc-page element-doc-page">
+
+  <!-- HEADER -->
+  <div class="header md-accent-bg" layout="row" layout-align="space-between">
+    <div layout="column" layout-align="center start">
+      <div class="title">Idiomas</div>
+    </div>
+  </div>
+  <!-- / HEADER -->
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <div layout="row" layout-align="start center">
+      <!-- <md-button class="md-raised" ng-click="vm.showAddDate($event)">Añadir nueva fecha</md-button>
+      <md-input-container class="no-errors-spacer" flex="40" md-no-float>
+        <label>Dealer</label>
+        <md-select ng-model="vm.selectedDealer">
+          <md-option ng-value="dealer" ng-repeat="dealer in vm.dealers">{{ dealer.name }}</md-option>
+        </md-select>
+        </md-select>
+      </md-input-container> -->
+    </div>
+
+    <!-- <div layout="row" layout-align="start center"> -->
+      <md-button class="md-accent add-car-button md-raised" ng-click="vm.showCreateForm()">
+        Agregar Idioma<md-icon md-font-icon="icon-plus"></md-icon>
+      </md-button>
+    <!-- </div> -->
+
+    <!-- <md-button class="add-car-button md-fab md-warn" ng-click="vm.addEvent($event)"
+               aria-label="Add event" translate translate-attr-aria-label="CALENDAR.ADD_EVENT">
+        <md-icon md-font-icon="icon-plus"></md-icon>
+    </md-button> -->
+
+    <div class="white-bg md-whiteframe-2dp">
+      <table class="dataTable row-border hover" datatable="ng" dt-options="vm.dtOptions" ms-responsive-table>
+        <thead>
+          <tr>
+            <th class="secondary-text">
+              <div class="table-header">
+                <span class="column-title">id</span>
+              </div>
+            </th>
+            <th class="secondary-text">
+              <div class="table-header">
+                <span class="column-title">Nombre</span>
+              </div>
+            </th>
+            <th class="secondary-text">
+              <div class="table-header">
+                <span class="column-title">Acciones</span>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="tipo in vm.tipos">
+            <td>{{tipo.id_tipo}}</td>
+            <td>{{tipo.nombre}}</td>
+            <td layout="row">
+              <md-button class="md-raised" ng-click="vm.showEditForm(tipo, $event)">Modificar</md-button>
+              <md-button class="md-raised" ng-click="vm.destroy(tipo)">Eliminar</md-button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <!-- / CONTENT -->
+</div>

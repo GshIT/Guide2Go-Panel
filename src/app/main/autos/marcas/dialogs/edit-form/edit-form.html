@@ -1,0 +1,77 @@
+<md-dialog class="event-form-dialog" aria-label="New Message">
+	<form name="form" class="md-inline-form" novalidate>
+		<md-toolbar class="md-accent md-hue-2">
+			<div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+				<span class="title">Editar Marca</span>
+				<md-button class="md-icon-button" ng-click="vm.close()" aria-label="Close dialog" translate translate-attr-aria-label="CALENDAR.CLOSE_DIALOG">
+					<md-icon md-font-icon="icon-close"></md-icon>
+				</md-button>
+			</div>
+		</md-toolbar>
+
+		<md-dialog-content ms-scroll>
+
+      <md-input-container class="md-block">
+        <label>Nombre</label>
+        <input required name="name" ng-model="vm.marca.nombre">
+        <div ng-messages="form.name.$error">
+          <div ng-message="required">Campo Requerido.</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container flex class="md-block">
+                <label>Guia</label>
+                <md-select ng-model="vm.auto.id_tipo">
+                  <md-option ng-repeat="tipo in vm.tipos" value="{{tipo.id_tipo}}">
+                      {{tipo.nombre}}
+                  </md-option>
+                </md-select>
+      </md-input-container>
+      <md-input-container flex class="md-block">
+                <label>Parada</label>
+                <md-select ng-model="vm.auto.id_tipo">
+                  <md-option ng-repeat="tipo in vm.tipos" value="{{tipo.id_tipo}}">
+                      {{tipo.nombre}}
+                  </md-option>
+                </md-select>
+      </md-input-container>
+
+
+				<div flex>
+					<h3><b>Audio Actual</b></h3>
+					<img ng-show="vm.marca.img_url_marca" src="{{vm.marca.img_url_marca || 'http://placehold.it/800/800'}}" class="img-responsive" alt="">
+					<p ng-show="!vm.marca.img_url_marca"> No tiene Audio. </p>
+				</div>
+			
+
+      <div layout="row" layout-padding>
+        <div flex layout="row" layout-align="start end">
+          <lf-ng-md-file-input name="file" lf-files="vm.marca.file" preview draw progress
+             lf-filesize="10MB" lf-browse-label="Elegir Foto"
+             lf-remove-label="Eliminar" lf-drag-and-drop-label="Arrastrar">
+          </lf-ng-md-file-input>
+          <div ng-messages="form.file.$error" style="color:red;">
+            <!-- <div ng-message="required"> La imagen es obligatoria.</div> -->
+            <div ng-message="filesize"> Archivo demasiado Grande!.</div>
+            <!-- <div ng-message="mimetype">Mimetype error.</div> -->
+          </div>
+        </div>
+      </div>
+
+		</md-dialog-content>
+
+		<md-dialog-actions layout="row" layout-align="space-between center">
+			<md-button ng-click="vm.close()" class="md-warn md-raised" aria-label="CANCEL"
+				ng-disabled="vm.updating">
+				Cancelar
+			</md-button>
+
+			<md-progress-circular ng-show="vm.updating" md-mode="indeterminate"></md-progress-circular>
+
+			<md-button ng-click="vm.update()" class="save-button md-accent md-raised" aria-label="SAVE"
+			ng-disabled="form.$invalid || vm.updating">
+				Actualizar
+			</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>

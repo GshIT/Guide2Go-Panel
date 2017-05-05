@@ -1,0 +1,54 @@
+<md-dialog class="event-form-dialog" aria-label="New Message">
+	<form name="form" class="md-inline-form" novalidate>
+		<md-toolbar class="md-accent md-hue-2">
+			<div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+				<span class="title">Añadir Combustible</span>
+				<md-button class="md-icon-button" ng-click="vm.close()" aria-label="Close dialog" translate translate-attr-aria-label="CALENDAR.CLOSE_DIALOG">
+					<md-icon md-font-icon="icon-close"></md-icon>
+				</md-button>
+			</div>
+		</md-toolbar>
+
+		<md-dialog-content ms-scroll>
+
+			<md-input-container class="md-block">
+        <label>Nombre</label>
+        <input required name="nombre" ng-model="vm.combustible.nombre">
+        <div ng-messages="form.nombre.$error">
+          <div ng-message="required">Campo Requerido</div>
+        </div>
+      </md-input-container>
+
+			<md-input-container class="md-block">
+        <label>Descripcion</label>
+        <input md-no-asterisk name="descripcion" ng-model="vm.combustible.descripcion">
+        <div ng-messages="form.descripcion.$error">
+          <div ng-message="required">Campo Requerido</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label>Octanaje</label>
+        <input required type="number" step="any" name="octanaje" ng-model="vm.combustible.octanaje"
+					min="1" max="1000">
+        <div ng-messages="form.octanaje.$error">
+          <div ng-message="required">Campo Requerido</div>
+					<div ng-message="min">Octanaje minimo: 1</div>
+					<div ng-message="max">Octanaje maximo: 1000</div>
+        </div>
+      </md-input-container>
+
+		</md-dialog-content>
+
+		<md-dialog-actions layout="row" layout-align="space-between center">
+			<md-button ng-click="vm.close()" class="md-warn md-raised" aria-label="CANCEL">
+				Cancelar
+			</md-button>
+
+			<md-button ng-click="vm.save()" class="save-button md-accent md-raised" aria-label="SAVE"
+      ng-disabled="form.$invalid">
+				Guardar
+			</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>

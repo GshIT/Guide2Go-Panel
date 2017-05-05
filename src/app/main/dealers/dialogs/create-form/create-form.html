@@ -1,0 +1,91 @@
+<md-dialog class="event-form-dialog" aria-label="New Message">
+	<form name="form" class="md-inline-form" novalidate map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="{{vm.googleMapsUrl}}">
+		<md-toolbar class="md-accent md-hue-2">
+			<div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+				<span class="title">Añadir Dealer</span>
+				<md-button class="md-icon-button" ng-click="vm.close()" aria-label="Close dialog" translate translate-attr-aria-label="CALENDAR.CLOSE_DIALOG">
+					<md-icon md-font-icon="icon-close"></md-icon>
+				</md-button>
+			</div>
+		</md-toolbar>
+
+		<md-dialog-content ms-scroll>
+
+			<md-input-container class="md-block">
+        <label>Nombres</label>
+        <input required name="nombres" ng-model="vm.dealer.nombres">
+        <div ng-messages="form.nombres.$error">
+          <div ng-message="required">Campo requerido.</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label>Apellidos</label>
+        <input required name="apellidos" ng-model="vm.dealer.apellidos">
+        <div ng-messages="form.apellidos.$error">
+          <div ng-message="required">Campo requerido.</div>
+        </div>
+      </md-input-container>
+
+			<md-input-container class="md-block">
+        <label>Email</label>
+        <input required name="email" ng-model="vm.dealer.email">
+        <div ng-messages="form.email.$error">
+          <div ng-message="required">Campo requerido.</div>
+        </div>
+      </md-input-container>
+
+			<!-- <md-input-container class="md-block">
+        <label>Latitud</label>
+        <input required name="latitude" ng-model="vm.dealer.latitude">
+        <div ng-messages="form.latitude.$error">
+          <div ng-message="required">Campo requerido.</div>
+        </div>
+      </md-input-container>
+
+			<md-input-container class="md-block">
+        <label>Longitud</label>
+        <input required name="longitude" ng-model="vm.dealer.longitude">
+        <div ng-messages="form.longitude.$error">
+          <div ng-message="required">Campo requerido.</div>
+        </div>
+      </md-input-container> -->
+
+			<h2 class="center-text">Ingresa tu direccion!</h2>
+			<h4 class="center-text">En caso de no ser correcta corrigela moviendo el marcador en el mapa!</h4>
+
+			<md-input-container class="md-block">
+        <!-- <label>Direccion</label> -->
+				<input required places-auto-complete size="80" ng-model="vm.dealer.address"
+					name="address" component-restrictions="{ country: 'pe' }"
+					types="{{vm.type}}" on-place-changed="vm.placeChanged()" aria-label="ADDRESS">
+        <div ng-messages="form.longitude.$error">
+          <div ng-message="required">Campo requerido.</div>
+        </div>
+      </md-input-container>
+
+
+			<h4 class="center-text location-text">
+				({{vm.marker.lat}}, {{vm.marker.lng}})
+			</h4>
+			<div ng-if="vm.render">
+	  		<ng-map class="map-container" ng-init="height = 2" md-whiteframe="{{height}}" ng-mouseenter="height = 6" ng-mouseleave="height = 2"
+					center="{{vm.mapCenter}}" zoom="12" >
+	  			<marker on-drag="vm.handleMarkerDrag()" position="{{vm.marker.lat}}, {{vm.marker.lng}}" draggable="true" animation="DROP"></marker>
+	  		</ng-map>
+			</div>
+
+		</md-dialog-content>
+
+		<md-dialog-actions layout="row" layout-align="space-between center">
+			<md-button ng-click="vm.close()" class="md-warn md-raised" aria-label="CANCEL">
+				Cancelar
+			</md-button>
+
+			<md-button ng-click="vm.save()" class="save-button md-accent md-raised" aria-label="SAVE"
+      ng-disabled="form.$invalid">
+				Guardar
+			</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>

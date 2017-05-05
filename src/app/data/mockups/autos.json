@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "marca": "mojon",
+    "nombre": "auto 1",
+    "tipo": "Deportivos",
+    "subTipo": "Roadster",
+    "anho": "2014",
+    "cuotaMensual": 2000,
+    "precio": 30000
+  },
+  {
+    "id": 2,
+    "marca": "Honda",
+    "nombre": "auto 2",
+    "tipo": "Deportivos",
+    "subTipo": "Roadster",
+    "anho": "2010",
+    "cuotaMensual": 1000,
+    "precio": 30000
+  },
+  {
+    "id": 3,
+    "marca": "Ford",
+    "nombre": "auto 3",
+    "tipo": "Turismo",
+    "subTipo": "Super deportivo",
+    "anho": "2016",
+    "cuotaMensual": 3000,
+    "precio": 90000
+  }
+]

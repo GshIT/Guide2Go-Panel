@@ -1,0 +1,86 @@
+<md-dialog class="event-form-dialog" aria-label="New Message">
+	<form name="eventForm" class="md-inline-form" novalidate>
+		<md-toolbar class="md-accent md-hue-2">
+			<div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+				<span class="title">Actualizar Auto</span>
+				<md-button class="md-icon-button" ng-click="vm.close()" aria-label="Close dialog" translate translate-attr-aria-label="CALENDAR.CLOSE_DIALOG">
+					<md-icon md-font-icon="icon-close"></md-icon>
+				</md-button>
+			</div>
+		</md-toolbar>
+
+		<md-dialog-content ms-scroll>
+
+		<div layout="row" layout-xs="column" layout-padding>
+				<md-input-container flex class="md-block">
+	        <label>Nombre</label>
+	        <input required md-no-asterisk name="anio_lanzamiento" ng-model="vm.auto.nombre_modelo">
+	        <div ng-messages="form.anio_lanzamiento.$error">
+	          <div ng-message="required">This is required.</div>
+	        </div>
+	      </md-input-container>
+
+			<md-input-container flex class="md-block">
+	        	<label>Email</label>
+	        	<input md-no-asterisk name="score_auto" ng-model="vm.auto.nombre_marca">
+	        	<div ng-messages="form.score_auto.$error">
+	          		<div ng-message="required">This is required.</div>
+	        	</div>
+	      	</md-input-container>
+		</div>
+
+			<div layout="row" layout-xs="column" layout-padding>
+				<md-input-container flex class="md-block">
+	        		<label>Dolares</label>
+	        		<input required md-no-asterisk name="anio_lanzamiento" ng-model="vm.auto.nombre_marca">
+	        		<div ng-messages="form.anio_lanzamiento.$error">
+	          			<div ng-message="required">This is required.</div>
+	        		</div>
+	      		</md-input-container>
+
+				<md-input-container flex class="md-block">
+          			<label>Tipo de usuario</label>
+          			<md-select ng-model="vm.auto.id_subtipo">
+            			<md-option ng-repeat="subtipo in vm.subtipos" value="{{subtipo.id_subtipo}}">
+              				{{subtipo.nombre}}
+            			</md-option>
+          			</md-select>
+        		</md-input-container>
+
+				<md-input-container flex class="md-block">
+          			<label>Pagina</label>
+          			<md-select ng-model="vm.auto.id_subtipo">
+            			<md-option ng-repeat="subtipo in vm.subtipos" value="{{subtipo.id_subtipo}}">
+              				{{subtipo.nombre}}
+            			</md-option>
+          			</md-select>
+        		</md-input-container>
+			</div>
+
+			<div layout="row" layout-xs="column" layout-padding>
+				<md-input-container flex class="md-block">
+	        		<label>Contraseña</label>
+	        		<input required md-no-asterisk name="anio_lanzamiento" ng-model="vm.auto.nombre_marca">
+	        		<div ng-messages="form.anio_lanzamiento.$error">
+	          			<div ng-message="required">This is required.</div>
+	        		</div>
+	      		</md-input-container>
+        	</div>
+		</md-dialog-content>
+
+
+		<md-dialog-actions layout="row" layout-align="space-between center">
+			<md-button ng-click="vm.close()" class="md-warn md-raised" aria-label="CANCEL"
+				ng-disabled="vm.updating">
+				Cancelar
+			</md-button>
+
+			<md-progress-circular ng-show="vm.updating" md-mode="indeterminate"></md-progress-circular>
+
+			<md-button ng-click="vm.update()" class="save-button md-accent md-raised" aria-label="SAVE"
+				ng-disabled="eventForm.$invalid || vm.updating">
+				Actualizar
+			</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>

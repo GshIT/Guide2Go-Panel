@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "nombre": "Honda"
+  },
+  {
+    "id": 2,
+    "nombre": "Marca 2"
+  },
+  {
+    "id": 3,
+    "nombre": "Toyota"
+  },
+  {
+    "id": 4,
+    "nombre": "Ford"
+  }
+]

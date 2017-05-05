@@ -1,0 +1,20 @@
+{
+    "LOGIN": {
+        "TITLE": "Entra con tu cuenta!",
+        "EMAIL": "Email",
+        "PASSWORD": "Contraseña",
+        "REMEMBER_ME": "Recordar",
+        "FORGOT_PASSWORD": "Olvidastes tu contraseña?",
+        "LOG_IN": "LOG IN",
+        "OR": "OR",
+        "WITH_GOOGLE": "Entra con Google",
+        "WITH_FACEBOOK": "Entra con Facebook",
+        "DONT_HAVE_ACCOUNT": "Don't have an account?",
+        "CREATE_ACCOUNT": "Create an account",
+        "ERRORS": {
+            "EMAIL_REQUIRED": "Debes ingresar tu email",
+            "EMAIL_MUST_VALID": "El email ingresado no es valido",
+            "PASSWORD_REQUIRED": "Debes ingresar un password"
+        }
+    }
+}

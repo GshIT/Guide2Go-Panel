@@ -1,0 +1,102 @@
+<div id="simple-table" class="page-layout simple fullwidth doc-page element-doc-page">
+
+  <!-- HEADER -->
+  <div class="header md-accent-bg" layout="row" layout-align="space-between">
+    <div layout="column" layout-align="center start">
+      <div class="breadcrumb" layout="row" layout-align="start center">
+        <md-icon md-font-icon="icon-home" class="s16"></md-icon>
+        <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+        <span class="parent">Reportes</span>
+        <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+        <span class="parent">Autos Escogidos por Leads</span>
+      </div>
+
+      <div class="title">Autos Escogidos por Leads</div>
+    </div>
+  </div>
+  <!-- / HEADER -->
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <div layout="row" layout-align="start center">
+      <!-- <md-button class="md-raised" ng-click="vm.showAddDate($event)">Añadir nueva fecha</md-button>
+      <md-input-container class="no-errors-spacer" flex="40" md-no-float>
+        <label>Dealer</label>
+        <md-select ng-model="vm.selectedDealer">
+          <md-option ng-value="dealer" ng-repeat="dealer in vm.dealers">{{ dealer.name }}</md-option>
+        </md-select>
+        </md-select>
+      </md-input-container> -->
+    </div>
+
+    <!-- <div layout="row" layout-align="start center"> -->
+      <!-- <md-button class="md-accent add-car-button md-raised" ng-click="vm.showCreateForm()">
+        Agregar Combustible<md-icon md-font-icon="icon-plus"></md-icon>
+      </md-button> -->
+    <!-- </div> -->
+
+    <!-- <md-button class="add-car-button md-fab md-warn" ng-click="vm.addEvent($event)"
+               aria-label="Add event" translate translate-attr-aria-label="CALENDAR.ADD_EVENT">
+        <md-icon md-font-icon="icon-plus"></md-icon>
+    </md-button> -->
+
+    <div class="white-bg md-whiteframe-2dp">
+      <table class="dataTable row-border hover" datatable="ng" dt-options="vm.dtOptions" ms-responsive-table>
+        <thead>
+          <tr>
+            <th class="secondary-text">
+              <div class="table-header">
+                <span class="column-title">id</span>
+              </div>
+            </th>
+            <th class="secondary-text">
+              <div class="table-header">
+                <span class="column-title">Usuario</span>
+              </div>
+            </th>
+            <th class="secondary-text">
+              <div class="table-header">
+                <span class="column-title">Correo</span>
+              </div>
+            </th>
+            <th class="secondary-text">
+              <div class="table-header">
+                <span class="column-title">Telefono</span>
+              </div>
+            </th>
+            <th class="secondary-text">
+              <div class="table-header">
+                <span class="column-title">Direccion</span>
+              </div>
+            </th>
+            <th class="secondary-text">
+              <div class="table-header">
+                <span class="column-title">Auto</span>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in vm.autosElegidosPorLeads">
+            <td>{{item.id_auto_elegido_por_lead}}</td>
+            <td>{{item.nombres}} {{item.apellidos}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.telefono}}</td>
+            <td>
+              <p class="direccion">
+                Direccion
+                <md-tooltip md-direction="top">
+                  {{item.direccion}}
+                </md-tooltip>
+              </p>
+            </td>
+            <td>{{item.nombre_marca}} {{item.nombre_modelo}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <!-- / CONTENT -->
+</div>

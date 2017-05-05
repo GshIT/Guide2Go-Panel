@@ -1,0 +1,58 @@
+<md-dialog class="event-form-dialog" aria-label="New Message">
+	<form name="form" class="md-inline-form" novalidate>
+		<md-toolbar class="md-accent md-hue-2">
+			<div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+				<span class="title">Editar Motor</span>
+				<md-button class="md-icon-button" ng-click="vm.close()" aria-label="Close dialog" translate translate-attr-aria-label="CALENDAR.CLOSE_DIALOG">
+					<md-icon md-font-icon="icon-close"></md-icon>
+				</md-button>
+			</div>
+		</md-toolbar>
+
+		<md-dialog-content ms-scroll>
+
+			<md-input-container class="md-block">
+        <label>Descripcion</label>
+        <input required name="descripcion" ng-model="vm.motor.descripcion">
+        <div ng-messages="form.descripcion.$error">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label>Modelo</label>
+        <input md-no-asterisk name="modelo" ng-model="vm.motor.modelo">
+        <div ng-messages="form.modelo.$error">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+
+			<md-input-container class="md-block">
+        <label>Tipo</label>
+        <input md-no-asterisk name="tipo" ng-model="vm.motor.tipo">
+        <div ng-messages="form.tipo.$error">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+
+			<md-input-container class="md-block">
+        <label>Marca</label>
+        <input md-no-asterisk name="marca" ng-model="vm.motor.marca">
+        <div ng-messages="form.marca.$error">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+
+		</md-dialog-content>
+
+		<md-dialog-actions layout="row" layout-align="space-between center">
+			<md-button ng-click="vm.close()" class="md-warn md-raised" aria-label="CANCEL">
+				Cancelar
+			</md-button>
+
+			<md-button ng-click="vm.update()" class="save-button md-accent md-raised" aria-label="SAVE" ng-disabled="form.$invalid">
+				Actualizar
+			</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>

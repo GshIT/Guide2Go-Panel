@@ -1,0 +1,34 @@
+<md-dialog class="event-form-dialog" aria-label="New Message">
+	<form name="form" class="md-inline-form" novalidate>
+		<md-toolbar class="md-accent md-hue-2">
+			<div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+				<span class="title">Editar Tipo</span>
+				<md-button class="md-icon-button" ng-click="vm.close()" aria-label="Close dialog" translate translate-attr-aria-label="CALENDAR.CLOSE_DIALOG">
+					<md-icon md-font-icon="icon-close"></md-icon>
+				</md-button>
+			</div>
+		</md-toolbar>
+
+		<md-dialog-content ms-scroll>
+
+			<md-input-container class="md-block">
+        <label>Nombre</label>
+        <input required name="nombre" ng-model="vm.tipo.nombre">
+        <div ng-messages="form.nombre.$error">
+          <div ng-message="required">Campo Requerido.</div>
+        </div>
+      </md-input-container>
+
+		</md-dialog-content>
+
+		<md-dialog-actions layout="row" layout-align="space-between center">
+			<md-button ng-click="vm.close()" class="md-warn md-raised" aria-label="CANCEL">
+				Cancelar
+			</md-button>
+
+			<md-button ng-click="vm.update()" class="save-button md-accent md-raised" aria-label="SAVE" ng-disabled="form.$invalid">
+				Guardar
+			</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>

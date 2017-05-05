@@ -1,0 +1,41 @@
+/**
+ *  Do not remove this comments bellow. It's the markers used by wiredep to inject
+ *  sass dependencies when defined in the bower.json of your dependencies
+ */
+// bower:scss
+// endbower
+
+/**
+ *  Do not remove this comments bellow. It's the markers used by gulp-inject to inject
+ *  all your sass files automatically
+ */
+// injector
+// endinjector
+
+
+
+.toast-successfully .md-toast-content {
+  background-color: #2e7d32 !important;
+}
+
+.toast-error .md-toast-content {
+  background-color: #e75a5a!important;
+}
+
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+.center-text {
+  text-align: center;
+}
