@@ -8,7 +8,7 @@
   /** @ngInject */
   function SubTiposController(
     $state, api, $document, $mdDialog, $mdToast,
-    moment, utils, $timeout, $scope, subtipos, DtOptions
+    moment, utils, $timeout, $scope, subtipos, DtOptions, zonas
   ) {
     var vm = this;
 
@@ -49,6 +49,9 @@
 		    parent: angular.element($document.body),
 		    targetEvent: e,
 		    clickOutsideToClose: true,
+        locals: {
+          zonas: zonas
+        }
 		  }).then(function(newSubTipo) {
         return api.subtipos.create(newSubTipo);
       }).then(function(res) {
