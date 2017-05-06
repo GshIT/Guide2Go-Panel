@@ -19,7 +19,7 @@
 
 			<md-input-container flex class="md-block">
 	        	<label>Email</label>
-	        	<input md-no-asterisk name="email" ng-model="vm.user.email">
+	        	<input type="email" md-no-asterisk name="email" ng-model="vm.user.email" ng-pattern="/^.+@.+\..+$/">
 	      	</md-input-container>
 		</div>
 
