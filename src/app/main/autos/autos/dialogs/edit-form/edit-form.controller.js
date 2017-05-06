@@ -7,33 +7,37 @@
 
   /** @ngInject */
   function EditFormAutosController(
-    auto, $mdDialog, marcas, tipos, subtipos, versiones, combustibles, motores, api
+    user, $mdDialog, api
   ) {
 
     var vm = this;
 
     vm.close = close;
-    vm.auto = auto;
+    //vm.auto = auto;
     vm.update = update;
     vm.updating = false;
+    vm.user = user;
 
-    vm.marcas = marcas;
+    if(vm.user.user_type == "admin"){vm.user.user_types_id = 1;}
+    else if(vm.user.user_type == "blogger"){vm.user.user_types_id = 2;}
+    else if(vm.user.user_type == "normal"){vm.user.user_types_id = 3;}
+
+    /*vm.marcas = marcas;
     vm.tipos = tipos;
     vm.subtipos = subtipos;
     vm.modelos = [];
     vm.versiones = versiones;
     vm.combustibles = combustibles;
-    vm.motores = motores;
+    vm.motores = motores;*/
 
     function update() {
-      var localAuto = vm.auto;
+      console.log(vm.user.password);
+      var localUser = vm.user;
       vm.updating = true;
-      api.autos.update(localAuto).then(function(res) {
-        if (localAuto.file.length < 1) return false;
+      api.users.update(localUser).then(function(res) {
         var formData = new FormData();
-        formData.append('id_auto', localAuto.id_auto);
-        formData.append('archivo', localAuto.file[0].lfFile);
-        return api.autos.updateImage(formData);
+        formData.append('id', localUser.id);
+        return res;
       }).then(function(res) {
         vm.updating = false;
         $mdDialog.hide(res);

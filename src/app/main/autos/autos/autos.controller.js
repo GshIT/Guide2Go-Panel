@@ -23,24 +23,8 @@
 
     vm.dtOptions = DtOptions;
 
-    /*(function retrieveUsers(){
-      let req = {
-            method: 'GET',
-            url: 'http://digitalcook.info:8000/api/user?token='+localStorage.getItem('token'),
-            headers: {
-              'Access-Control-Allow-Origin': '*'
-            },
-          }
-
-      $http(req).then(function success(response){
-        console.log(response.data.users);
-      }, 
-      function fail(response){
-        console.log(response);
-      });
-    })();*/
-
-    function showEditForm(auto, e) {
+  
+    function showEditForm(user, e) {
 		  $mdDialog.show({
 		    controller: 'EditFormAutosController',
 		    controllerAs: 'vm',
@@ -49,33 +33,20 @@
 		    targetEvent: e,
 		    clickOutsideToClose: true,
 		    locals: {
-		      auto: auto,
-          marcas: marcas,
-          tipos: tipos,
-          subtipos: subtipos,
-          versiones: versiones,
-          combustibles: combustibles,
-          motores: motores
+		      user: user
 		    }
-		  }).then(function(answer) {
-        return api.autos.update(answer);
-      }).then(function() {
-        if (auto.file.length < 1) return false;
-        var formData = new FormData();
-        formData.append('id_auto', auto.id_auto);
-        formData.append('archivo', auto.file[0].lfFile);
-        return api.autos.updateImage(formData);
-      }).then(function() {
-        utils.successToast('Auto actualizado exitosamente!');
+		  }).then(function(res) {
+        console.log(res);
+        utils.successToast('Usuario actualizado exitosamente!');
 				$timeout($state.reload(), 4000);
 			}).catch(function(err) {
         if (err === "closed-manually" || typeof(err) === 'undefined') return;
-        utils.errorToast('Error al actualizar el Auto!');
+        utils.errorToast('Error al actualizar el Usuario!');
       });
 		}
 
-    function showCreateForm(e, auto) {
-      auto = auto || {};
+    function showCreateForm(e, user) {
+      user = user || {};
 		  $mdDialog.show({
 		    controller: 'CreateFormAutosController',
 		    controllerAs: 'vm',
@@ -84,13 +55,7 @@
 		    targetEvent: e,
 		    clickOutsideToClose: true,
         locals: {
-          auto: auto,
-          marcas: marcas,
-          tipos: tipos,
-          subtipos: subtipos,
-          versiones: versiones,
-          combustibles: combustibles,
-          motores: motores
+          user: user
 		    }
       }).then(function(res) {
         utils.successToast('Auto creado exitosamente!');
@@ -101,24 +66,27 @@
       });
 		}
 
-    function destroy(auto) {
+    function destroy(user) {
       swal(utils.swalDeleteObject({
-        title: 'Seguro que quieres eliminar este Auto?',
+        title: 'Seguro que quieres eliminar este Usuario?',
         preConfirm: function() {
-          return api.autos.destroy(auto);
+          return api.users.destroy(user);
         }
       })).then(function(res) {
-        utils.removeObjectFromArray(vm.autos, auto, 'id_auto');
+        console.log(res);
+        utils.removeObjectFromArray(vm.users, user, 'id');
+        console.log(res);
         $scope.$apply();
         swal({
           type: 'success',
-          title: 'Se elimino el Auto exitosamente!',
+          title: 'Se elimino el Usuario exitosamente!',
         });
       }).catch(function(err) {
+        console.log(err);
         if (err === "cancel") return;
         swal({
           type: 'warning',
-          title: 'Error al intentar eliminar el Auto!',
+          title: 'Error al intentar eliminar el Usuario!',
           text: 'Intente de nuevo mas tarde.'
         });
       });

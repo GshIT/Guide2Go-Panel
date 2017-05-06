@@ -2,7 +2,7 @@
 	<form name="eventForm" class="md-inline-form" novalidate>
 		<md-toolbar class="md-accent md-hue-2">
 			<div class="md-toolbar-tools" layout="row" layout-align="space-between center">
-				<span class="title">Actualizar Auto</span>
+				<span class="title">Actualizar Usuario</span>
 				<md-button class="md-icon-button" ng-click="vm.close()" aria-label="Close dialog" translate translate-attr-aria-label="CALENDAR.CLOSE_DIALOG">
 					<md-icon md-font-icon="icon-close"></md-icon>
 				</md-button>
@@ -14,56 +14,39 @@
 		<div layout="row" layout-xs="column" layout-padding>
 				<md-input-container flex class="md-block">
 	        <label>Nombre</label>
-	        <input required md-no-asterisk name="anio_lanzamiento" ng-model="vm.auto.nombre_modelo">
-	        <div ng-messages="form.anio_lanzamiento.$error">
-	          <div ng-message="required">This is required.</div>
-	        </div>
+	        <input  md-no-asterisk name="name" ng-model="vm.user.name">
 	      </md-input-container>
 
 			<md-input-container flex class="md-block">
 	        	<label>Email</label>
-	        	<input md-no-asterisk name="score_auto" ng-model="vm.auto.nombre_marca">
-	        	<div ng-messages="form.score_auto.$error">
-	          		<div ng-message="required">This is required.</div>
-	        	</div>
+	        	<input md-no-asterisk name="email" ng-model="vm.user.email">
 	      	</md-input-container>
 		</div>
 
 			<div layout="row" layout-xs="column" layout-padding>
 				<md-input-container flex class="md-block">
 	        		<label>Dolares</label>
-	        		<input required md-no-asterisk name="anio_lanzamiento" ng-model="vm.auto.nombre_marca">
-	        		<div ng-messages="form.anio_lanzamiento.$error">
-	          			<div ng-message="required">This is required.</div>
-	        		</div>
+	        		<input  md-no-asterisk name="dolares" ng-model="vm.user.dolares">
 	      		</md-input-container>
 
 				<md-input-container flex class="md-block">
           			<label>Tipo de usuario</label>
-          			<md-select ng-model="vm.auto.id_subtipo">
-            			<md-option ng-repeat="subtipo in vm.subtipos" value="{{subtipo.id_subtipo}}">
-              				{{subtipo.nombre}}
-            			</md-option>
+          			<md-select ng-model="vm.user.user_types_id">
+            			<!-- <md-option ng-repeat="tipo in vm.tipos" value="{{tipo.id_tipo}}">
+              				{{tipo.nombre}}
+            			</md-option> -->
+            			<md-option value="1" ng-active>admin</md-option>
+            			<md-option value="2">blogger</md-option>
+            			<md-option value="3">normal</md-option>
           			</md-select>
         		</md-input-container>
 
-				<md-input-container flex class="md-block">
-          			<label>Pagina</label>
-          			<md-select ng-model="vm.auto.id_subtipo">
-            			<md-option ng-repeat="subtipo in vm.subtipos" value="{{subtipo.id_subtipo}}">
-              				{{subtipo.nombre}}
-            			</md-option>
-          			</md-select>
-        		</md-input-container>
 			</div>
 
 			<div layout="row" layout-xs="column" layout-padding>
 				<md-input-container flex class="md-block">
 	        		<label>Contraseña</label>
-	        		<input required md-no-asterisk name="anio_lanzamiento" ng-model="vm.auto.nombre_marca">
-	        		<div ng-messages="form.anio_lanzamiento.$error">
-	          			<div ng-message="required">This is required.</div>
-	        		</div>
+	        		<input md-no-asterisk name="password" ng-model="vm.user.password">
 	      		</md-input-container>
         	</div>
 		</md-dialog-content>

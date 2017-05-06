@@ -43,18 +43,47 @@
 
         return $http(req);
       },
-      /*create: function(auto) {
-        return $http.post(api.baseUrl + '/autos', auto);
+      create: function(user) {
+        let data = {
+          name: user.name,
+          email: user.email,
+          dolares: user.dolares,
+          user_types_id: user.user_types_id,
+          password: user.password
+        }
+        let req = {
+            method: 'POST',
+            url: 'http://digitalcook.info:8000/api/user/admin?token='+localStorage.getItem('token'),
+            headers: {
+              'Access-Control-Allow-Origin': '*'
+            },
+            data: data
+          };
+
+        return $http(req);
       },
-      update: function(auto) {
-        return $http.put(api.baseUrl + '/autos/' + auto.id_auto, auto);
+      update: function(user) {
+        let data = {
+          name: user.name,
+          email: user.email,
+          dolares: user.dolares,
+          user_types_id: user.user_types_id,
+          password: user.password
+        }
+
+        return $http.put('http://digitalcook.info:8000/api/user/'+user.id+'?token='+localStorage.getItem('token'),data);
       },
-      destroy: function(auto) {
-        return $http.delete(api.baseUrl + '/autos/' + auto.id_auto);
+      destroy: function(user) {
+        let req = {
+            method: 'DELETE',
+            url: 'http://digitalcook.info:8000/api/user/'+user.id+'?token='+localStorage.getItem('token'),
+            headers: {
+              'Access-Control-Allow-Origin': '*'
+            },
+          };
+
+        return $http(req);
       },
-      updateImage: function(formData) {
-        return $http.post(api.baseUrl + '/autos/image/auto', formData, api.headerConfig.file);
-      }*/
     };
 
     api.mockup = {
