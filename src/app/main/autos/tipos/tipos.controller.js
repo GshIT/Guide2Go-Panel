@@ -49,17 +49,13 @@
 		    parent: angular.element($document.body),
 		    targetEvent: e,
 		    clickOutsideToClose: true,
-		  }).then(function(newTipo) {
-        console.log(newTipo);
-        return api.tipos.create(newTipo);
-      }).then(function(res) {
+		  }).then(function(res) {
         console.log("Creado");
-        console.log(res);
-        utils.successToast('Tipo de Auto creado exitosamente!');
+        utils.successToast('Zona creada exitosamente!');
 				$timeout($state.reload(), 4000);
 			}).catch(function(err) {
         if (err === "closed-manually" || typeof(err) === 'undefined') return;
-        utils.errorToast('Error al crear tipo de auto!');
+        utils.errorToast('Error al crear Zona!');
       });
 		}
 

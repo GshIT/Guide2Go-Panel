@@ -38,7 +38,7 @@
     // });
     //
     msNavigationServiceProvider.saveItem('autos.tipos', {
-        title : 'Tipos',
+        title : 'Zonas',
         state : 'app.tipos',
         weight: 1
     });

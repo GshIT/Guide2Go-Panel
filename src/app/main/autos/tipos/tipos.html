@@ -3,7 +3,7 @@
   <!-- HEADER -->
   <div class="header md-accent-bg" layout="row" layout-align="space-between">
     <div layout="column" layout-align="center start">
-      <div class="title">Idiomas</div>
+      <div class="title">Zonas</div>
     </div>
   </div>
   <!-- / HEADER -->
@@ -24,7 +24,7 @@
 
     <!-- <div layout="row" layout-align="start center"> -->
       <md-button class="md-accent add-car-button md-raised" ng-click="vm.showCreateForm()">
-        Agregar Idioma<md-icon md-font-icon="icon-plus"></md-icon>
+        Agregar Zona<md-icon md-font-icon="icon-plus"></md-icon>
       </md-button>
     <!-- </div> -->
 
@@ -49,6 +49,11 @@
             </th>
             <th class="secondary-text">
               <div class="table-header">
+                <span class="column-title">Poligono</span>
+              </div>
+            </th>
+            <th class="secondary-text">
+              <div class="table-header">
                 <span class="column-title">Acciones</span>
               </div>
             </th>
@@ -57,6 +62,7 @@
         <tbody>
           <tr ng-repeat="tipo in vm.tipos">
             <td>{{tipo.id_tipo}}</td>
+            <td>{{tipo.nombre}}</td>
             <td>{{tipo.nombre}}</td>
             <td layout="row">
               <md-button class="md-raised" ng-click="vm.showEditForm(tipo, $event)">Modificar</md-button>

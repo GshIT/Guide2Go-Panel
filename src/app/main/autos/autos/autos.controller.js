@@ -58,11 +58,11 @@
           user: user
 		    }
       }).then(function(res) {
-        utils.successToast('Auto creado exitosamente!');
+        utils.successToast('Usuario creado exitosamente!');
 				$timeout($state.reload(), 4000);
 			}).catch(function(err) {
         if (err === "closed-manually" || typeof(err) === 'undefined') return;
-        utils.errorToast('Error al crear Auto!');
+        utils.errorToast('Error al crear Usuario!');
       });
 		}
 

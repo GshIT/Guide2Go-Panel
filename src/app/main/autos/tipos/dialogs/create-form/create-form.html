@@ -1,8 +1,16 @@
+
+<style>
+       #map {
+        height: 250px;
+        width: 100%;
+       }
+</style>
+
 <md-dialog class="event-form-dialog" aria-label="New Message">
 	<form name="form" class="md-inline-form" novalidate>
 		<md-toolbar class="md-accent md-hue-2">
 			<div class="md-toolbar-tools" layout="row" layout-align="space-between center">
-				<span class="title">Añadir Tipo</span>
+				<span class="title">Añadir Zona</span>
 				<md-button class="md-icon-button" ng-click="vm.close()" aria-label="Close dialog" translate translate-attr-aria-label="CALENDAR.CLOSE_DIALOG">
 					<md-icon md-font-icon="icon-close"></md-icon>
 				</md-button>
@@ -13,10 +21,13 @@
 
       <md-input-container class="md-block">
         <label>Nombre</label>
-        <input required name="nombre" ng-model="vm.tipo.nombre">
+        <input required name="nombre" ng-model="vm.zona.name">
         <div ng-messages="form.nombre.$error">
           <div ng-message="required">Campo Requerido.</div>
         </div>
+        <h3>Agrege un poligono</h3>
+        <div id="map"></div>
+
       </md-input-container>
 
 		</md-dialog-content>
@@ -32,4 +43,42 @@
 			</md-button>
 		</md-dialog-actions>
 	</form>
+
 </md-dialog>
+
+<script type="text/javascript">
+
+	function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 15.397, lng: 10.644},
+          zoom: 2,
+          streetViewControl:false
+        });
+
+        var drawingManager = new google.maps.drawing.DrawingManager({
+		      drawingControl: true,
+		      drawingControlOptions: {
+		      	drawingModes: [
+			      google.maps.drawing.OverlayType.POLYGON
+			    ],
+		        position: google.maps.ControlPosition.TOP_CENTER,
+		        drawingModes: ['polygon']
+		      },
+        });
+        drawingManager.setMap(map);
+
+        google.maps.event.addListener(drawingManager, 'polygoncomplete', function(polygon) {
+        	let paths = polygon.getPath().getArray();
+        	let poligono = '[';
+        	let final = '[' + paths[0].lat() + ', ' + paths[0].lng() + ']';
+        	for (var i = 0; i < paths.length - 1; i++) {
+        		poligono = poligono + '[' + paths[i].lat() + ', ' + paths[i].lng() + '],'
+			}
+			poligono = poligono + '[' + paths[i].lat() + ', ' + paths[i].lng() + '],' + final + ']'
+    		localStorage.setItem('poligono',poligono);
+		});
+    }
+</script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?callback=initMap&libraries=drawing">
+</script>

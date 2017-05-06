@@ -31,6 +31,9 @@
       }
     };
 
+    /*
+      INICIO DE API DE USUARIOS
+    */
     api.users = {
       get: function() {
         let req = {
@@ -85,6 +88,48 @@
         return $http(req);
       },
     };
+
+    /*
+      FIN DE API DE USUARIOS
+    */
+
+    /*
+      INICIO DE API DE ZONAS
+    */
+
+    api.zonas = {
+      /*get: function() {
+        return $http.get(api.baseUrl + '/autos');
+      },*/
+      create: function(zona) {
+        let data = {
+          name: zona.name,
+          polygon: JSON.parse(zona.polygon)
+        };
+        let req = {
+            method: 'POST',
+            url: 'http://digitalcook.info:8000/api/zona?token='+localStorage.getItem('token'),
+            headers: {
+              'Access-Control-Allow-Origin': '*'
+            },
+            data: data
+          };
+        return $http(req);
+      },
+      /*update: function(auto) {
+        return $http.put(api.baseUrl + '/autos/' + auto.id_auto, auto);
+      },
+      destroy: function(auto) {
+        return $http.delete(api.baseUrl + '/autos/' + auto.id_auto);
+      },
+      updateImage: function(formData) {
+        return $http.post(api.baseUrl + '/autos/image/auto', formData, api.headerConfig.file);
+      }*/
+    };
+
+    /*
+      FIN DE API DE ZONAS
+    */
 
     api.mockup = {
       getAutos: function() {

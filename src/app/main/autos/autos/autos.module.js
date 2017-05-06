@@ -63,7 +63,7 @@
     });
 
     msNavigationServiceProvider.saveItem('autos.autos', {
-        title : 'Autos',
+        title : 'Users',
         state : 'app.autos',
         // icon:   'icon-car',
         weight: 1
