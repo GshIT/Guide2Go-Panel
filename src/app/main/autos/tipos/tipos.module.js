@@ -13,6 +13,11 @@
     $stateProvider.state('app.tipos', {
       url: '/tipos',
       resolve: {
+        zonas: function(api) {
+          return api.zonas.get().then(function(res) {
+            return res.data
+          });
+        },
         tipos: function(api) {
           return api.tipos.get().then(function(res) {
             return res.data

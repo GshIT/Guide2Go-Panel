@@ -60,13 +60,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="tipo in vm.tipos">
-            <td>{{tipo.id_tipo}}</td>
-            <td>{{tipo.nombre}}</td>
-            <td>{{tipo.nombre}}</td>
+          <tr ng-repeat="zona in vm.zonas">
+            <td>{{zona.id}}</td>
+            <td>{{zona.name}}</td>
+            <td><md-button class="md-raised">Ver Zona</md-button></td>
             <td layout="row">
-              <md-button class="md-raised" ng-click="vm.showEditForm(tipo, $event)">Modificar</md-button>
-              <md-button class="md-raised" ng-click="vm.destroy(tipo)">Eliminar</md-button>
+              <md-button class="md-raised" ng-click="vm.showEditForm(zona, $event)">Modificar</md-button>
+              <md-button class="md-raised" ng-click="vm.destroy(zona)">Eliminar</md-button>
             </td>
           </tr>
         </tbody>

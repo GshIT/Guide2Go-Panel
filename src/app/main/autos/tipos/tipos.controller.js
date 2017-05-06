@@ -8,7 +8,7 @@
   /** @ngInject */
   function TiposController(
     $state, api, $document, $mdDialog, $mdToast,
-    moment, utils, $timeout, $scope, tipos, DtOptions
+    moment, utils, $timeout, $scope, tipos, DtOptions, zonas
   ) {
     var vm = this;
 
@@ -18,6 +18,8 @@
     vm.destroy = destroy;
 
     vm.dtOptions = DtOptions;
+
+    vm.zonas = zonas;
 
     function showEditForm(tipo, e) {
 		  $mdDialog.show({

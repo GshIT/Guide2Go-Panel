@@ -98,9 +98,16 @@
     */
 
     api.zonas = {
-      /*get: function() {
-        return $http.get(api.baseUrl + '/autos');
-      },*/
+      get: function() {
+        let req = {
+            method: 'GET',
+            url: 'http://digitalcook.info:8000/api/zona?token='+localStorage.getItem('token'),
+            headers: {
+              'Access-Control-Allow-Origin': '*'
+            },
+          };
+        return $http(req);
+      },
       create: function(zona) {
         let data = {
           name: zona.name,
