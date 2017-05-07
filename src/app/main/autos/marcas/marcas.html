@@ -75,18 +75,16 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="marca in vm.marcas">
-            <td>{{marca.id_marca}}</td>
-            <td>{{marca.id_marca}}</td>
-            <td>{{marca.id_marca}}</td>
-            <td>{{marca.id_marca}}</td>
-            <td>
-              <img src="{{marca.img_url_marca || 'http://placehold.it/600/600'}}" class="brand-img img-responsive" alt="">
-            </td>
-            <td><md-button class="md-raised" ng-click="">Ver Punto</md-button></td>
+          <tr ng-repeat="parada in vm.paradas">
+            <td>{{parada.id}}</td>
+            <td>{{parada.nombre}}</td>
+            <td>{{parada.descripcion}}</td>
+            <td>{{parada.categoria_id}}</td>
+            <td>{{parada.sub_zona.nombre}}</td>
+            <td style="vertical-align: top"><md-button class="md-raised" ng-click="">Ver Punto</md-button></td>
             <td layout="row">
-              <md-button class="md-raised" ng-click="vm.showEditForm(marca, $event)">Modificar</md-button>
-              <md-button class="md-raised" ng-click="vm.destroy(marca)">Eliminar</md-button>
+              <md-button class="md-raised" ng-click="vm.showEditForm(parada, $event)">Modificar</md-button>
+              <md-button class="md-raised" ng-click="vm.destroy(parada)">Eliminar</md-button>
             </td>
           </tr>
         </tbody>

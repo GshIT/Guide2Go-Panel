@@ -7,9 +7,8 @@
 
   /** @ngInject */
   function AutosController(
-    autos, $state, api, $document, $mdDialog, $mdToast,
+   $state, api, $document, $mdDialog, $mdToast,
     moment, utils, $timeout, $scope,
-    marcas, tipos, subtipos, versiones, combustibles, motores,
     DtOptions, $http, users
   ) {
 

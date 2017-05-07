@@ -6,28 +6,25 @@
     .controller('CreateFormMarcasController', CreateFormMarcasController);
 
   /** @ngInject */
-  function CreateFormMarcasController($scope, $mdDialog, marca, api) {
+  function CreateFormMarcasController($scope, $mdDialog, subzonas, api) {
     var vm = this;
 
     vm.close = close;
     vm.save = save;
-    vm.marca = marca;
     vm.creating = false;
 
+    vm.subzonas = subzonas;
+    vm.parada = {};
+    vm.parada.sub_zonas_id = vm.subzonas[0].id;
+    vm.parada.categoria_id = 1;
+
     function save() {
-      var localMarca = vm.marca;
+      vm.parada.punto = localStorage.getItem('punto');
+      var localParada = vm.parada;
       vm.creating = true;
-      api.marcas.create(localMarca).then(function(res) {
+      api.paradas.create(localParada).then(function(res) {
         var data = res.data;
-        if (data.state) {
-          var idMarca = data.created_id;
-          if (localMarca.file.length < 1) return false;
-          var formData = new FormData();
-          formData.append('id_marca', idMarca);
-          formData.append('archivo', localMarca.file[0].lfFile);
-          return api.marcas.updateImage(formData);
-        }
-        return response;
+        return res;
       }).then(function(res) {
         vm.creating = false;
         $mdDialog.hide(res);

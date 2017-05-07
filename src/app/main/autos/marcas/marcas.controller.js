@@ -7,15 +7,14 @@
 
   /** @ngInject */
   function MarcasController(
-    $state, marcas, api, $document, $mdDialog, $mdToast, moment, $timeout, $scope, utils, DtOptions
+    $state, api, $document, $mdDialog, $mdToast, moment, $timeout, $scope, utils, DtOptions, subzonas, paradas
   ) {
     var vm = this;
 
-    vm.marcas = marcas;
     vm.showEditForm = showEditForm;
     vm.showCreateForm = showCreateForm;
     vm.destroy = destroy;
-
+    vm.paradas = paradas;
     vm.removeObjectFromArray = utils.removeObjectFromArray;
 
     vm.dtOptions = DtOptions;
@@ -62,12 +61,12 @@
 		    targetEvent: e,
 		    clickOutsideToClose: true,
         locals: {
-          marca: marca
+          subzonas: subzonas
         }
 		  }).then(function(res) {
         $mdToast.show(
           $mdToast.simple()
-            .textContent("Marca creada de manera exitosa!")
+            .textContent("Parada creada de manera exitosa!")
             .toastClass("toast-successfully")
             .hideDelay(3000)
         );
@@ -77,7 +76,7 @@
         console.log(err);
         $mdToast.show(
           $mdToast.simple()
-            .textContent("Error al crear la marca")
+            .textContent("Error al crear la Parada")
             .toastClass("toast-error")
             .hideDelay(3000)
         );

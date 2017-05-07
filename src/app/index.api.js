@@ -185,6 +185,55 @@
       FIN DE API DE SUBZONAS
     */
 
+    /*
+      INICIO DE API DE PARADAS
+    */
+
+    api.paradas = {
+      get: function() {
+        let req = {
+            method: 'GET',
+            url: 'http://digitalcook.info:8000/api/parada?token='+localStorage.getItem('token'),
+            headers: {
+              'Access-Control-Allow-Origin': '*'
+            },
+          };
+        return $http(req);
+      },
+      create: function(parada) {
+        let data = {
+          subzone: parada.sub_zonas_id,
+          category: parada.categoria_id,
+          name: parada.name,
+          description: parada.descripcion,
+          point: JSON.parse(parada.punto)
+        };
+        let req = {
+            method: 'POST',
+            url: 'http://digitalcook.info:8000/api/parada?token='+localStorage.getItem('token'),
+            headers: {
+              'Access-Control-Allow-Origin': '*'
+            },
+            data: data
+          };
+          console.log(JSON.stringify(data));
+        return $http(req);
+      },
+      /*update: function(auto) {
+        return $http.put(api.baseUrl + '/autos/' + auto.id_auto, auto);
+      },
+      destroy: function(auto) {
+        return $http.delete(api.baseUrl + '/autos/' + auto.id_auto);
+      },
+      updateImage: function(formData) {
+        return $http.post(api.baseUrl + '/autos/image/auto', formData, api.headerConfig.file);
+      }*/
+    };
+
+    /*
+      FIN DE API DE PARADAS
+    */
+
     api.mockup = {
       getAutos: function() {
         return $http.get(api.baseDataUrl + 'mockups/autos.json');

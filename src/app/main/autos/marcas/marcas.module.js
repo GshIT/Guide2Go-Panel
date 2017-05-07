@@ -13,11 +13,15 @@
     $stateProvider.state('app.marcas', {
       url: '/marcas',
       resolve: {
-        marcas: function(api) {
-          return api.marcas.get()
-            .then(function(res) {
-              return res.data
-            });
+        paradas: function(api) {
+          return api.paradas.get().then(function(res) {
+            return res.data
+          });
+        },
+        subzonas: function(api) {
+          return api.subzonas.get().then(function(res) {
+            return res.data
+          });
         },
       },
       views: {
@@ -39,7 +43,7 @@
     // });
     //
     msNavigationServiceProvider.saveItem('autos.marcas', {
-        title : 'Marcas',
+        title : 'Paradas',
         state : 'app.marcas',
         weight: 1
     });
