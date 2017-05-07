@@ -30,7 +30,8 @@
             url: 'http://digitalcook.info:8000/api/audio?token='+localStorage.getItem('token'),
             data: {aud: file, spot: vm.audio.spot, lang: vm.audio.lang,}
         }).then(function (resp) {
-            console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+            console.log('Audio Guardado');
+            $mdDialog.hide(resp);
         }, function (resp) {
             console.log(resp);
         }, function (evt) {

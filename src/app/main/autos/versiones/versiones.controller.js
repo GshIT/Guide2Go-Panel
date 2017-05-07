@@ -53,11 +53,11 @@
           paradas: paradas,
         }
 		  }).then(function(res) {
-        utils.successToast('Version de Auto creado exitosamente!');
+        utils.successToast('Audio creado exitosamente!');
 				$timeout($state.reload(), 4000);
 			}).catch(function(err) {
         if (err === "closed-manually" || typeof(err) === 'undefined') return;
-        utils.errorToast('Error al crear Version de auto!');
+        utils.errorToast('Error al crear Audio!');
       });
 		}
 
