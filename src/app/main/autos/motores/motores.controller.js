@@ -8,7 +8,7 @@
   /** @ngInject */
   function MotoresController(
     $state, api, $document, $mdDialog, $mdToast,
-    moment, utils, $timeout, $scope, motores, DtOptions
+    moment, utils, $timeout, $scope, motores, DtOptions, zonas
   ) {
     var vm = this;
 
@@ -49,14 +49,16 @@
 		    parent: angular.element($document.body),
 		    targetEvent: e,
 		    clickOutsideToClose: true,
-		  }).then(function(motor) {
-        return api.motores.create(motor);
-      }).then(function(res) {
-        utils.successToast('Motor creado exitosamente!');
+        locals: {
+          zonas: zonas
+        }
+		  }).then(function(res) {
+        console.log(res);
+        utils.successToast('Guia creada exitosamente!');
 				$timeout($state.reload(), 4000);
 			}).catch(function(err) {
         if (err === "closed-manually" || typeof(err) === 'undefined') return;
-        utils.errorToast('Error al crear Motor!');
+        utils.errorToast('Error al crear Guia!');
       });
 		}
 

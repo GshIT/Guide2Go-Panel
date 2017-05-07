@@ -11,8 +11,13 @@
   function config($stateProvider, $translatePartialLoaderProvider, msNavigationServiceProvider) {
     // State
     $stateProvider.state('app.motores', {
-      url: '/motores',
+      url: '/guias',
       resolve: {
+        zonas: function(api) {
+          return api.zonas.get().then(function(res) {
+            return res.data
+          });
+        },
         motores: function(api) {
           return api.motores.get().then(function(res) {
             return res.data
@@ -28,7 +33,7 @@
     });
 
     msNavigationServiceProvider.saveItem('autos.motores', {
-        title : 'Motores',
+        title : 'Guias',
         state : 'app.motores',
         weight: 1
     });

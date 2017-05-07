@@ -3,15 +3,7 @@
   <!-- HEADER -->
   <div class="header md-accent-bg" layout="row" layout-align="space-between">
     <div layout="column" layout-align="center start">
-      <div class="breadcrumb" layout="row" layout-align="start center">
-        <md-icon md-font-icon="icon-home" class="s16"></md-icon>
-        <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
-        <span class="parent">Autos</span>
-        <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
-        <span class="parent">Motores</span>
-      </div>
-
-      <div class="title">Motores</div>
+      <div class="title">Guias</div>
     </div>
   </div>
   <!-- / HEADER -->
@@ -32,7 +24,7 @@
 
     <!-- <div layout="row" layout-align="start center"> -->
       <md-button class="md-accent add-car-button md-raised" ng-click="vm.showCreateForm()">
-        Agregar Motor<md-icon md-font-icon="icon-plus"></md-icon>
+        Agregar Guia<md-icon md-font-icon="icon-plus"></md-icon>
       </md-button>
     <!-- </div> -->
 
@@ -52,22 +44,17 @@
             </th>
             <th class="secondary-text">
               <div class="table-header">
-                <span class="column-title">Descripcion</span>
+                <span class="column-title">Zona</span>
               </div>
             </th>
             <th class="secondary-text">
               <div class="table-header">
-                <span class="column-title">Modelo</span>
+                <span class="column-title">Idioma</span>
               </div>
             </th>
             <th class="secondary-text">
               <div class="table-header">
-                <span class="column-title">Tipo</span>
-              </div>
-            </th>
-            <th class="secondary-text">
-              <div class="table-header">
-                <span class="column-title">Marca</span>
+                <span class="column-title">Costo</span>
               </div>
             </th>
             <th class="secondary-text">
@@ -83,7 +70,6 @@
             <td>{{motor.descripcion}}</td>
             <td>{{motor.modelo}}</td>
             <td>{{motor.tipo}}</td>
-            <td>{{motor.marca}}</td>
             <td layout="row">
               <md-button class="md-raised" ng-click="vm.showEditForm(motor, $event)">Modificar</md-button>
               <md-button class="md-raised" ng-click="vm.destroy(motor)">Eliminar</md-button>
