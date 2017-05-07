@@ -52,14 +52,12 @@
         locals: {
           zonas: zonas
         }
-		  }).then(function(newSubTipo) {
-        return api.subtipos.create(newSubTipo);
-      }).then(function(res) {
-        utils.successToast('SubTipo de Auto creado exitosamente!');
+		  }).then(function(res) {
+        utils.successToast('SubZona creada exitosamente!');
 				$timeout($state.reload(), 4000);
 			}).catch(function(err) {
         if (err === "closed-manually" || typeof(err) === 'undefined') return;
-        utils.errorToast('Error al crear SubTipo de auto!');
+        utils.errorToast('Error al crear SubZona!');
       });
 		}
 

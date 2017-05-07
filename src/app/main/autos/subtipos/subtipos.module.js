@@ -33,7 +33,7 @@
     });
 
     msNavigationServiceProvider.saveItem('autos.subtipos', {
-        title : 'SubTipos',
+        title : 'SubZona',
         state : 'app.subtipos',
         weight: 1
     });

@@ -138,6 +138,53 @@
       FIN DE API DE ZONAS
     */
 
+     /*
+      INICIO DE API DE SUBZONAS
+    */
+
+    api.subzonas = {
+      get: function() {
+        let req = {
+            method: 'GET',
+            url: 'http://digitalcook.info:8000/api/sub_zone?token='+localStorage.getItem('token'),
+            headers: {
+              'Access-Control-Allow-Origin': '*'
+            },
+          };
+        return $http(req);
+      },
+      create: function(subzona) {
+        let data = {
+          zone: subzona.zona_id,
+          name: subzona.name,
+          polygon: JSON.parse(subzona.polygon)
+        };
+        let req = {
+            method: 'POST',
+            url: 'http://digitalcook.info:8000/api/sub_zone?token='+localStorage.getItem('token'),
+            headers: {
+              'Access-Control-Allow-Origin': '*'
+            },
+            data: data
+          };
+          console.log(JSON.stringify(data));
+        return $http(req);
+      },
+      /*update: function(auto) {
+        return $http.put(api.baseUrl + '/autos/' + auto.id_auto, auto);
+      },
+      destroy: function(auto) {
+        return $http.delete(api.baseUrl + '/autos/' + auto.id_auto);
+      },
+      updateImage: function(formData) {
+        return $http.post(api.baseUrl + '/autos/image/auto', formData, api.headerConfig.file);
+      }*/
+    };
+
+    /*
+      FIN DE API DE SUBZONAS
+    */
+
     api.mockup = {
       getAutos: function() {
         return $http.get(api.baseDataUrl + 'mockups/autos.json');
