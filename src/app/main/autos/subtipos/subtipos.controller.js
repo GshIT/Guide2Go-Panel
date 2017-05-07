@@ -8,7 +8,7 @@
   /** @ngInject */
   function SubTiposController(
     $state, api, $document, $mdDialog, $mdToast,
-    moment, utils, $timeout, $scope, subtipos, DtOptions, zonas
+    moment, utils, $timeout, $scope, subtipos, DtOptions, zonas, subzonas
   ) {
     var vm = this;
 
@@ -18,6 +18,8 @@
     vm.destroy = destroy;
 
     vm.dtOptions = DtOptions;
+
+    vm.subzonas = subzonas;
 
     function showEditForm(subtipo, e) {
 		  $mdDialog.show({

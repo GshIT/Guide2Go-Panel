@@ -13,6 +13,11 @@
     $stateProvider.state('app.subtipos', {
       url: '/subtipos',
       resolve: {
+        subzonas: function(api) {
+          return api.subzonas.get().then(function(res) {
+            return res.data
+          });
+        },
         zonas: function(api) {
           return api.zonas.get().then(function(res) {
             return res.data

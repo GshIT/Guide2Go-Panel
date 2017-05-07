@@ -65,11 +65,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="subtipo in vm.subtipos">
-            <td>{{subtipo.id_subtipo}}</td>
-            <td>{{subtipo.nombre}}</td>
-            <td>{{subtipo.descripcion}}</td>
-            <td><md-button class="md-raised">Ver Zona</md-button></td>
+          <tr ng-repeat="subzona in vm.subzonas">
+            <td>{{subzona.id}}</td>
+            <td>{{subzona.nombre}}</td>
+            <td>{{subzona.zona.name}}</td>
+            <td><md-button class="md-raised">Ver SubZona</md-button></td>
             <td layout="row">
               <md-button class="md-raised" ng-click="vm.showEditForm(subtipo, $event)">Modificar</md-button>
               <md-button class="md-raised" ng-click="vm.destroy(subtipo)">Eliminar</md-button>
