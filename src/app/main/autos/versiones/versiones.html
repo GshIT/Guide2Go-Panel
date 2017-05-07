@@ -54,6 +54,11 @@
             </th>
             <th class="secondary-text">
               <div class="table-header">
+                <span class="column-title">Reproducir</span>
+              </div>
+            </th>
+            <th class="secondary-text">
+              <div class="table-header">
                 <span class="column-title">Acciones</span>
               </div>
             </th>
@@ -64,6 +69,7 @@
             <td>{{version.id_version}}</td>
             <td>{{version.nombre}}</td>
             <td>{{version.descripcion}}</td>
+            <td style="vertical-align: top;"><md-button class="md-raised">Reproducir</md-button></td>
             <td layout="row">
               <md-button class="md-raised" ng-click="vm.showEditForm(version, $event)">Modificar</md-button>
               <md-button class="md-raised" ng-click="vm.destroy(version)">Eliminar</md-button>
