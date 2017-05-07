@@ -11,37 +11,27 @@
 
 		<md-dialog-content ms-scroll>
 
-      <md-input-container class="md-block">
-        <label>Nombre</label>
-        <input required name="nombre" ng-model="vm.version.nombre">
-        <div ng-messages="form.nombre.$error">
-          <div ng-message="required">This is required.</div>
-        </div>
+      <md-input-container flex class="md-block">
+          <label>Parada</label>
+          <md-select ng-model="vm.audio.spot">
+            <md-option ng-repeat="parada in vm.paradas" value="{{parada.id}}">
+                {{parada.nombre}}
+            </md-option> 
+          </md-select>
       </md-input-container>
 
-			<md-input-container class="md-block">
-        <label>Descripcion</label>
-        <input md-no-asterisk name="descripcion" ng-model="vm.version.descripcion">
-        <!-- <div ng-messages="form.descripcion.$error">
-          <div ng-message="required">This is required.</div>
-        </div> -->
+			<md-input-container flex class="md-block">
+          <label>Idioma</label>
+          <md-select ng-model="vm.audio.lang">
+            <md-option value="1">Español</md-option> 
+            <md-option value="2">English</md-option> 
+          </md-select>
       </md-input-container>
 
-			<md-input-container class="md-block">
-        <label>Abreviatura</label>
-        <input md-no-asterisk name="abreviatura" ng-model="vm.version.abreviatura">
-        <!-- <div ng-messages="form.abreviatura.$error">
-          <div ng-message="required">This is required.</div>
-        </div> -->
-      </md-input-container>
-
-			<!-- <md-input-container class="md-block">
-        <label>id Modelo Tipo</label>
-        <input required md-no-asterisk name="modelo" ng-model="vm.version.id_modelo_tipo">
-        <div ng-messages="form.modelo.$error">
-          <div ng-message="required">This is required.</div>
-        </div>
-      </md-input-container> -->
+	  <md-button ngf-select ng-model="file" name="file" ngf-pattern="'audio/*'"
+    ngf-accept="'audio/*'" ngf-max-size="20MB" ngf-min-height="100"
+    ngf-resize="{width: 100, height: 100}">Selecciona Audio</md-button>
+    {{vm.load}}%
 
 		</md-dialog-content>
 
@@ -50,7 +40,7 @@
 				Cancelar
 			</md-button>
 
-			<md-button ng-click="vm.save()" class="save-button md-accent md-raised" aria-label="SAVE"
+			<md-button ng-click="submit()" class="save-button md-accent md-raised" aria-label="SAVE"
       ng-disabled="form.$invalid">
 				Guardar
 			</md-button>

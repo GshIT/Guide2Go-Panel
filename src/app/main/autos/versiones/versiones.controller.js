@@ -8,7 +8,7 @@
   /** @ngInject */
   function VersionesController(
     $state, api, $document, $mdDialog, $mdToast,
-    moment, utils, $timeout, $scope, versiones, DtOptions
+    moment, utils, $timeout, $scope, versiones, DtOptions, paradas
   ) {
     var vm = this;
 
@@ -49,9 +49,10 @@
 		    parent: angular.element($document.body),
 		    targetEvent: e,
 		    clickOutsideToClose: true,
-		  }).then(function(version) {
-        return api.versiones.create(version);
-      }).then(function(res) {
+        locals: {
+          paradas: paradas,
+        }
+		  }).then(function(res) {
         utils.successToast('Version de Auto creado exitosamente!');
 				$timeout($state.reload(), 4000);
 			}).catch(function(err) {
