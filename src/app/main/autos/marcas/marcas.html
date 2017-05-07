@@ -3,7 +3,7 @@
   <!-- HEADER -->
   <div class="header md-accent-bg" layout="row" layout-align="space-between">
     <div layout="column" layout-align="center start">
-      <div class="title">Audios</div>
+      <div class="title">Paradas</div>
     </div>
   </div>
   <!-- / HEADER -->
@@ -24,7 +24,7 @@
 
     <!-- <div layout="row" layout-align="start center"> -->
       <md-button class="md-accent add-car-button md-raised" ng-click="vm.showCreateForm()">
-        Agregar Audio<md-icon md-font-icon="icon-plus"></md-icon>
+        Agregar Parada<md-icon md-font-icon="icon-plus"></md-icon>
       </md-button>
     <!-- </div> -->
 
@@ -49,12 +49,22 @@
             </th>
             <th class="secondary-text">
               <div class="table-header">
-                <span class="column-title">Guia</span>
+                <span class="column-title">Descripcion</span>
               </div>
             </th>
             <th class="secondary-text">
               <div class="table-header">
-                <span class="column-title">Parada</span>
+                <span class="column-title">Categoria</span>
+              </div>
+            </th>
+            <th class="secondary-text">
+              <div class="table-header">
+                <span class="column-title">SubZona</span>
+              </div>
+            </th>
+            <th class="secondary-text">
+              <div class="table-header">
+                <span class="column-title">Punto</span>
               </div>
             </th>
             <th class="secondary-text">
@@ -69,13 +79,14 @@
             <td>{{marca.id_marca}}</td>
             <td>{{marca.id_marca}}</td>
             <td>{{marca.id_marca}}</td>
+            <td>{{marca.id_marca}}</td>
             <td>
               <img src="{{marca.img_url_marca || 'http://placehold.it/600/600'}}" class="brand-img img-responsive" alt="">
             </td>
+            <td><md-button class="md-raised" ng-click="">Ver Punto</md-button></td>
             <td layout="row">
               <md-button class="md-raised" ng-click="vm.showEditForm(marca, $event)">Modificar</md-button>
               <md-button class="md-raised" ng-click="vm.destroy(marca)">Eliminar</md-button>
-              <md-button class="md-raised" ng-click="">Descargar</md-button>
             </td>
           </tr>
         </tbody>
