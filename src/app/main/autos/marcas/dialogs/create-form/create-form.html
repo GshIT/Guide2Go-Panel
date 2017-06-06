@@ -1,8 +1,8 @@
 <style>
-       #map {
-        height: 250px;
-        width: 100%;
-       }
+#map {
+	height: 250px;
+	width: 100%;
+}
 </style>
 
 <md-dialog class="event-form-dialog" aria-label="New Message">
@@ -19,53 +19,53 @@
 		<md-dialog-content ms-scroll>
 
 			<md-input-container class="md-block">
-        <label>Nombre</label>
-        <input required name="name" ng-model="vm.parada.name">
-        <div ng-messages="form.name.$error">
-          <div ng-message="required">Campo Requerido.</div>
-        </div>
-      </md-input-container>
+				<label>Nombre</label>
+				<input required name="name" ng-model="vm.parada.name">
+				<div ng-messages="form.name.$error">
+					<div ng-message="required">Campo Requerido.</div>
+				</div>
+			</md-input-container>
 
-      <md-input-container class="md-block">
-        <label>Descripcion</label>
-        <textarea required name="name" ng-model="vm.parada.descripcion"></textarea>
-        <div ng-messages="form.name.$error">
-          <div ng-message="required">Campo Requerido.</div>
-        </div>
-      </md-input-container>
+			<md-input-container class="md-block">
+				<label>Descripcion</label>
+				<textarea required name="name" ng-model="vm.parada.descripcion"></textarea>
+				<div ng-messages="form.name.$error">
+					<div ng-message="required">Campo Requerido.</div>
+				</div>
+			</md-input-container>
 
-      <md-input-container flex class="md-block">
-                <label>SubZona</label>
-                <md-select ng-model="vm.parada.sub_zonas_id">
-                  <md-option ng-repeat="subzona in vm.subzonas" value="{{subzona.id}}">
-                      {{subzona.nombre}}
-                  </md-option>
-                </md-select>
-      </md-input-container>
+			<md-input-container flex class="md-block">
+				<label>SubZona</label>
+				<md-select ng-model="vm.parada.sub_zonas_id">
+					<md-option ng-repeat="subzona in vm.subzonas" ng-click="vm.updateSubZone(subzona)" value="{{subzona.id}}">
+						{{subzona.nombre}}
+					</md-option>
+				</md-select>
+			</md-input-container>
 
-      <md-input-container flex class="md-block">
-                <label>Categoria</label>
-                <md-select ng-model="vm.parada.categoria_id">
-                  <md-option value="1">Museo</md-option>
-                  <md-option value="2">Galeria</md-option>
-                </md-select>
-      </md-input-container>
+			<md-input-container flex class="md-block">
+				<label>Categoria</label>
+				<md-select ng-model="vm.parada.categoria_id">
+					<md-option value="1">Museo</md-option>
+					<md-option value="2">Galeria</md-option>
+				</md-select>
+			</md-input-container>
 
-      <h3>Agrege un Punto</h3>
-      <div id="map"></div>
+			<h3>Agrege un Punto</h3>
+			<div id="map"></div>
 
 		</md-dialog-content>
 
 		<md-dialog-actions layout="row" layout-align="space-between center">
 			<md-button ng-click="vm.close()" class="md-warn md-raised" aria-label="CANCEL"
-				ng-disabled="vm.creating">
+																															ng-disabled="vm.creating">
 				Cancelar
 			</md-button>
 
 			<md-progress-circular ng-show="vm.creating" md-mode="indeterminate"></md-progress-circular>
 
 			<md-button ng-click="vm.save()" class="save-button md-accent md-raised" aria-label="SAVE"
-				ng-disabled="form.$invalid || vm.creating">
+																																					 ng-disabled="form.$invalid || vm.creating">
 				Guardar
 			</md-button>
 		</md-dialog-actions>
@@ -74,29 +74,29 @@
 
 <script type="text/javascript">
 
-  function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 15.397, lng: 10.644},
-          zoom: 2,
-          streetViewControl:false
-        });
+var uniqueStopMap;
 
-        var drawingManager = new google.maps.drawing.DrawingManager({
-          drawingControl: true,
-          drawingControlOptions: {
-            position: google.maps.ControlPosition.TOP_CENTER,
-            drawingModes: ['marker']
-          },
-        });
-        drawingManager.setMap(map);
+(function initMap() {
+	var map = new google.maps.Map(document.getElementById('map'), {
+		center: {lat: 15.397, lng: 10.644},
+		zoom: 2,
+		streetViewControl:false
+	});
+	uniqueStopMap = map;
 
-        google.maps.event.addListener(drawingManager, 'markercomplete', function(marker) {
-          let punto = '['+marker.getPosition().lat()+','+marker.getPosition().lng()+']';
-          localStorage.setItem('punto',punto);
-        });
-    }
-</script>
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?callback=initMap&libraries=drawing&key=AIzaSyB1-InqkExqKsUlO-Xd7EJ6_RV4CR4UWAc">
+	var drawingManager = new google.maps.drawing.DrawingManager({
+		drawingControl: true,
+		drawingControlOptions: {
+			position: google.maps.ControlPosition.TOP_CENTER,
+			drawingModes: ['marker']
+		},
+	});
+	drawingManager.setMap(map);
+
+	google.maps.event.addListener(drawingManager, 'markercomplete', function(marker) {
+		let punto = '['+marker.getPosition().lat()+','+marker.getPosition().lng()+']';
+		localStorage.setItem('punto',punto);
+	});
+})();
 </script>
 
