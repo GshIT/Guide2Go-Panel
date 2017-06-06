@@ -1,8 +1,8 @@
 <style>
-       #map {
-        height: 250px;
-        width: 100%;
-       }
+#map {
+	height: 250px;
+	width: 100%;
+}
 </style>
 
 <md-dialog class="event-form-dialog" aria-label="New Message">
@@ -18,25 +18,25 @@
 
 		<md-dialog-content ms-scroll>
 
-      <md-input-container class="md-block">
-        <label>Nombre</label>
-        <input required name="nombre" ng-model="vm.subzona.name">
-        <div ng-messages="form.nombre.$error">
-          <div ng-message="required">Campo Requerido.</div>
-        </div>
-      </md-input-container>
+			<md-input-container class="md-block">
+				<label>Nombre</label>
+				<input required name="nombre" ng-model="vm.subzona.name">
+				<div ng-messages="form.nombre.$error">
+					<div ng-message="required">Campo Requerido.</div>
+				</div>
+			</md-input-container>
 
-      <md-input-container flex class="md-block">
-  			<label>Zona</label>
-  			<md-select ng-model="vm.subzona.zona_id">
-    			<md-option ng-repeat="zona in vm.zonas" value="{{zona.id}}">
-      				{{zona.name}}
-    			</md-option>
-  			</md-select>
-		</md-input-container>
+			<md-input-container flex class="md-block">
+				<label>Zona</label>
+				<md-select ng-model="vm.subzona.zona_id">
+					<md-option ng-repeat="zona in vm.zonas" ng-click="vm.updateZone(zona)" value="{{zona.id}}">
+						{{zona.name}}
+					</md-option>
+				</md-select>
+			</md-input-container>
 
-		<h3>Agrege un poligono</h3>
-        <div id="map"></div>
+			<h3>Agrege un poligono</h3>
+			<div id="map"></div>
 
 		</md-dialog-content>
 
@@ -46,7 +46,7 @@
 			</md-button>
 
 			<md-button ng-click="vm.save()" class="save-button md-accent md-raised" aria-label="SAVE"
-      ng-disabled="form.$invalid">
+																																					 ng-disabled="form.$invalid">
 				Guardar
 			</md-button>
 		</md-dialog-actions>
@@ -56,37 +56,39 @@
 
 <script type="text/javascript">
 
-	function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 15.397, lng: 10.644},
-          zoom: 2,
-          streetViewControl:false
-        });
+// Trampa de Rosendo
+var uniqueSubZoneMap;
 
-        var drawingManager = new google.maps.drawing.DrawingManager({
-		      drawingControl: true,
-		      drawingControlOptions: {
-		      	drawingModes: [
-			      google.maps.drawing.OverlayType.POLYGON
-			    ],
-		        position: google.maps.ControlPosition.TOP_CENTER,
-		        drawingModes: ['polygon']
-		      },
-        });
-        drawingManager.setMap(map);
+(function initMap() {
+	var map = new google.maps.Map(document.getElementById('map'), {
+		center: {lat: 15.397, lng: 10.644},
+		zoom: 2,
+		streetViewControl:false
+	});
+	uniqueSubZoneMap = map;
 
-        google.maps.event.addListener(drawingManager, 'polygoncomplete', function(polygon) {
-        	let paths = polygon.getPath().getArray();
-        	let poligono = '[';
-        	let final = '[' + paths[0].lat() + ', ' + paths[0].lng() + ']';
-        	for (var i = 0; i < paths.length - 1; i++) {
-        		poligono = poligono + '[' + paths[i].lat() + ', ' + paths[i].lng() + '],'
-			}
-			poligono = poligono + '[' + paths[i].lat() + ', ' + paths[i].lng() + '],' + final + ']'
-    		localStorage.setItem('poligono',poligono);
-		});
-    }
+	var drawingManager = new google.maps.drawing.DrawingManager({
+		drawingControl: true,
+		drawingControlOptions: {
+			drawingModes: [
+				google.maps.drawing.OverlayType.POLYGON
+			],
+			position: google.maps.ControlPosition.TOP_CENTER,
+			drawingModes: ['polygon']
+		},
+	});
+	drawingManager.setMap(map);
+
+	google.maps.event.addListener(drawingManager, 'polygoncomplete', function(polygon) {
+		let paths = polygon.getPath().getArray();
+		let poligono = '[';
+		let final = '[' + paths[0].lat() + ', ' + paths[0].lng() + ']';
+		for (var i = 0; i < paths.length - 1; i++) {
+			poligono = poligono + '[' + paths[i].lat() + ', ' + paths[i].lng() + '],'
+		}
+		poligono = poligono + '[' + paths[i].lat() + ', ' + paths[i].lng() + '],' + final + ']'
+		localStorage.setItem('poligono',poligono);
+	});
+})();
 </script>
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?callback=initMap&libraries=drawing&key=AIzaSyB1-InqkExqKsUlO-Xd7EJ6_RV4CR4UWAc">
-</script>
+

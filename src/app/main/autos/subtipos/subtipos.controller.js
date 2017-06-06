@@ -1,90 +1,90 @@
 (function() {
-  'use strict';
+	'use strict';
 
-  angular
-    .module('app.autos.subtipos')
-    .controller('SubTiposController', SubTiposController);
+	angular
+		.module('app.autos.subtipos')
+		.controller('SubTiposController', SubTiposController);
 
-  /** @ngInject */
-  function SubTiposController(
-    $state, api, $document, $mdDialog, $mdToast,
-    moment, utils, $timeout, $scope, subtipos, DtOptions, zonas, subzonas
-  ) {
-    var vm = this;
+	/** @ngInject */
+	function SubTiposController(
+		$state, api, $document, $mdDialog, $mdToast,
+		moment, utils, $timeout, $scope, subtipos, DtOptions, zonas, subzonas
+	) {
+		var vm = this;
 
-    vm.subtipos = subtipos;
-    vm.showEditForm = showEditForm;
-    vm.showCreateForm = showCreateForm;
-    vm.destroy = destroy;
+		vm.subtipos = subtipos;
+		vm.showEditForm = showEditForm;
+		vm.showCreateForm = showCreateForm;
+		vm.destroy = destroy;
 
-    vm.dtOptions = DtOptions;
+		vm.dtOptions = DtOptions;
 
-    vm.subzonas = subzonas;
+		vm.subzonas = subzonas;
 
-    function showEditForm(subtipo, e) {
-		  $mdDialog.show({
-		    controller: 'EditFormSubTiposController',
-		    controllerAs: 'vm',
-		    templateUrl: 'app/main/autos/subtipos/dialogs/edit-form/edit-form.html',
-		    parent: angular.element($document.body),
-		    targetEvent: e,
-		    clickOutsideToClose: true,
-		    locals: {
-		      subtipo: subtipo
-		    }
-		  }).then(function(data) {
-        return api.subtipos.update(data);
-      }).then(function() {
-        utils.successToast('Tipo de Auto actualizado exitosamente!');
+		function showEditForm(subtipo, e) {
+			$mdDialog.show({
+				controller: 'EditFormSubTiposController',
+				controllerAs: 'vm',
+				templateUrl: 'app/main/autos/subtipos/dialogs/edit-form/edit-form.html',
+				parent: angular.element($document.body),
+				targetEvent: e,
+				clickOutsideToClose: true,
+				locals: {
+					subtipo: subtipo
+				}
+			}).then(function(data) {
+				return api.subtipos.update(data);
+			}).then(function() {
+				utils.successToast('Tipo de Auto actualizado exitosamente!');
 				$timeout($state.reload(), 4000);
 			}).catch(function(err) {
-        if (err === "closed-manually" || typeof(err) === 'undefined') return;
-        utils.errorToast('Error al actualizar tipo de auto!');
-      });
+				if (err === "closed-manually" || typeof(err) === 'undefined') return;
+				utils.errorToast('Error al actualizar tipo de auto!');
+			});
 		}
 
-    function showCreateForm(e) {
-		  $mdDialog.show({
-		    controller: 'CreateFormSubTiposController',
-		    controllerAs: 'vm',
-		    templateUrl: 'app/main/autos/subtipos/dialogs/create-form/create-form.html',
-		    parent: angular.element($document.body),
-		    targetEvent: e,
-		    clickOutsideToClose: true,
-        locals: {
-          zonas: zonas
-        }
-		  }).then(function(res) {
-        utils.successToast('SubZona creada exitosamente!');
+		function showCreateForm(e) {
+			$mdDialog.show({
+				controller: 'CreateFormSubTiposController',
+				controllerAs: 'vm',
+				templateUrl: 'app/main/autos/subtipos/dialogs/create-form/create-form.html',
+				parent: angular.element($document.body),
+				targetEvent: e,
+				clickOutsideToClose: true,
+				locals: {
+					zonas: zonas
+				}
+			}).then(function(res) {
+				utils.successToast('SubZona creada exitosamente!');
 				$timeout($state.reload(), 4000);
 			}).catch(function(err) {
-        if (err === "closed-manually" || typeof(err) === 'undefined') return;
-        utils.errorToast('Error al crear SubZona!');
-      });
+				if (err === "closed-manually" || typeof(err) === 'undefined') return;
+				utils.errorToast('Error al crear SubZona!');
+			});
 		}
 
-    function destroy(subtipo) {
-      swal(utils.swalDeleteObject({
-        title: 'Seguro que quieres eliminar este SubTipo de auto?',
-        preConfirm: function() {
-          return api.subtipos.destroy(subtipo);
-        }
-      })).then(function(res) {
-        utils.removeObjectFromArray(vm.subtipos, subtipo, 'id_subtipo');
-        $scope.$apply();
-        swal({
-          type: 'success',
-          title: 'Se elimino el subtipo de auto exitosamente!',
-        });
-      }).catch(function(err) {
-        if (err === "cancel") return;
-        swal({
-          type: 'warning',
-          title: 'Error al intentar eliminar el SubTipo de auto!',
-          text: 'Intente de nuevo mas tarde.'
-        });
-      });
-    }
+		function destroy(subtipo) {
+			swal(utils.swalDeleteObject({
+				title: 'Seguro que quieres eliminar este SubTipo de auto?',
+				preConfirm: function() {
+					return api.subtipos.destroy(subtipo);
+				}
+			})).then(function(res) {
+				utils.removeObjectFromArray(vm.subtipos, subtipo, 'id_subtipo');
+				$scope.$apply();
+				swal({
+					type: 'success',
+					title: 'Se elimino el subtipo de auto exitosamente!',
+				});
+			}).catch(function(err) {
+				if (err === "cancel") return;
+				swal({
+					type: 'warning',
+					title: 'Error al intentar eliminar el SubTipo de auto!',
+					text: 'Intente de nuevo mas tarde.'
+				});
+			});
+		}
 
-  }
+	}
 })();
